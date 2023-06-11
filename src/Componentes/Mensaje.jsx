@@ -2,22 +2,21 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../Contexto/AuthContext'
 import { ChatContext } from '../Contexto/ChatContext'
 
-const Mensaje = () => {
+const Mensaje = ({message}) => {
 
   const {currentUser} = useContext(AuthContext)
   const {data} = useContext(ChatContext)
 
   return (
-    <div className='Mensaje Mio'>
+    <div className={`message ${message.senderId === currentUser.uid && "owner"}`}>      
       <div className='Info'>
         <img 
-          src="https://cdn.pixabay.com/photo/2021/09/02/16/48/cat-6593947_960_720.jpg"
+          src={message.senderId === currentUser.uid ? currentUser.photoURL : data.user.userInfo.photoURL}
           alts=""
         />
-        <span>Ahora</span>
       </div>
       <div className='Contenido'>
-        <p>Que pez</p>
+        <p>{message.text}</p>
       </div>
     </div>
   )

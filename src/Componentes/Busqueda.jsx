@@ -2,6 +2,7 @@ import {React,useContext,useState} from 'react'
 import { collection, query, where, getDocs, setDoc, doc, updateDoc, serverTimestamp, getDoc} from "firebase/firestore";
 import { db } from "../firebase"
 import { AuthContext } from '../Contexto/AuthContext'
+import { ChatContext } from '../Contexto/ChatContext'
 
 const Busqueda = () => {
 
@@ -10,6 +11,7 @@ const Busqueda = () => {
   const [err, setErr] = useState(false)
 
   const {currentUser} = useContext(AuthContext)
+  const {dispatch} = useContext(ChatContext)
 
   const handleSearch = async ()=>{
     const q = query(
@@ -31,7 +33,9 @@ const Busqueda = () => {
   }
 
   const handleSelect = async () => {
-    //check whether the group(chats in firestore) exists, if not create
+    // Crea las colecciones de chats y userChats
+    console.log(currentUser.uid)
+    console.log(user.uid)
     console.log("1")
     const combinedId =
       currentUser.uid > user.uid
@@ -44,32 +48,35 @@ const Busqueda = () => {
       console.log("4")
       if (!res.exists()) {
         console.log("5")
-        //create a chat in chats collection
+        // Crea el chat
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
         console.log("6")
-        //create user chats
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [combinedId + ".userInfo"]: {
             uid: user.uid,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
+            displayName: user.nombre,
+            photoURL: user.photoURL
           },
           [combinedId + ".date"]: serverTimestamp(),
         });
+        console.log("7")
 
         await updateDoc(doc(db, "userChats", user.uid), {
           [combinedId + ".userInfo"]: {
             uid: currentUser.uid,
             displayName: currentUser.displayName,
-            photoURL: currentUser.photoURL,
+            photoURL: currentUser.photoURL
           },
           [combinedId + ".date"]: serverTimestamp(),
         });
+        console.log("8")
+        
       }
     } catch (err) {}
 
     setUser(null);
     setUsername("")
+
   };
 
   return (

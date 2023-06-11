@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ChatContext } from '../Contexto/ChatContext'
 import { AuthContext } from '../Contexto/AuthContext'
-import { Timestamp, arrayUnion, doc, updateDoc } from 'firebase/firestore'
+import { Timestamp, serverTimestamp, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { v4 as uuid } from "uuid"
 import { useState } from 'react'
@@ -12,9 +12,6 @@ const InputMensaje = () => {
 
   const {data} = useContext(ChatContext)
   const {currentUser} = useContext(AuthContext)
-
-  console.log("Aqui")
-  console.log(data.chatId)
 
   const handleSend = async ()=>{
     await updateDoc(doc(db,"chats",data.chatId),{
@@ -45,7 +42,7 @@ const InputMensaje = () => {
   
   return (
     <div className='InputMensaje'>
-      <input type="text" placeholder='Escribe Algo'/>
+      <input type="text" placeholder='Escribe Algo' onChange={(e) => setText(e.target.value)} value={text}/>
       <div className='Enviar'>
         <button onClick={handleSend}>Enviar</button>
       </div>

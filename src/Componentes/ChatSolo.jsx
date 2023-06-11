@@ -6,11 +6,13 @@ import { ChatContext } from '../Contexto/ChatContext'
 const ChatSolo = () => {
 
   const {data} = useContext(ChatContext)
+  console.log("Data:")
+  console.log(data)
 
   return (
     <div className="ChatSolo">
       <div className='Info'>
-        <span>{data.user?.nombre}</span>
+        <span>{data.user.userInfo?.displayName}</span>
       </div>
       <Mensajes/>
       <InputMensaje/>

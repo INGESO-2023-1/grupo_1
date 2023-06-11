@@ -82,7 +82,7 @@ const Registro = () => {
                     <input type = "password" placeholder='Contraseña' />
                     <input style={{display:"none"}} type = 'file' id = "file"/>
                     <label htmlFor="file">
-                        <img src="../Imagenes/agregaravatar.png" alts=""/>
+                        <img src="../Imagenes/avatar.png" alts=""/>
                         <span>Añadir Foto de Perfil</span>
                     </label>
                     <button>Registrarse</button>
