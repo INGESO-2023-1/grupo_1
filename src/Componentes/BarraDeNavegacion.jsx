@@ -2,7 +2,7 @@ import React, { useContext,useRef } from 'react'
 import { auth } from '../firebase'
 import { signOut } from "firebase/auth"
 import { AuthContext } from '../Contexto/AuthContext'
-import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db,storage } from '../firebase'
 import { Timestamp, serverTimestamp, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 

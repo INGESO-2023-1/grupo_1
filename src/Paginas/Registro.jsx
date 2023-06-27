@@ -5,6 +5,7 @@ import { useState } from "react"
 import { doc, setDoc } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate, Link } from "react-router-dom"
+import imag from "../Imagenes/avatar.png"
 
 const Registro = () => {
 
@@ -37,6 +38,8 @@ const Registro = () => {
                 }
             },
             (error) => {
+                console.log("WAT")
+                console.log(error)
                 setErr(true)
             },
             () => {
@@ -82,7 +85,7 @@ const Registro = () => {
                     <input type = "password" placeholder='Contraseña' />
                     <input style={{display:"none"}} type = 'file' id = "file"/>
                     <label htmlFor="file">
-                        <img src="../Imagenes/avatar.png" alts=""/>
+                        <img src={imag} alt=""/>
                         <span>Añadir Foto de Perfil</span>
                     </label>
                     <button>Registrarse</button>
