@@ -13,6 +13,12 @@ const InputMensaje = () => {
   const {data} = useContext(ChatContext)
   const {currentUser} = useContext(AuthContext)
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  };
+
   const handleSend = async ()=>{
     await updateDoc(doc(db,"chats",data.chatId),{
       messages: arrayUnion({
@@ -24,6 +30,9 @@ const InputMensaje = () => {
       }),
     });
 
+    setText("")
+
+    // No realizado
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
@@ -31,18 +40,13 @@ const InputMensaje = () => {
       [data.chatId + ".date"]: serverTimestamp(),
     });
 
-    await updateDoc(doc(db, "userChats", data.user.uid), {
-      [data.chatId + ".lastMessage"]: {
-        text,
-      },
-      [data.chatId + ".date"]: serverTimestamp(),
-    });
+    
 
   }
   
   return (
     <div className='InputMensaje'>
-      <input type="text" placeholder='Escribe Algo' onChange={(e) => setText(e.target.value)} value={text}/>
+      <input type="text" placeholder='Escribe Algo' onChange={(e) => setText(e.target.value)} onKeyPress={handleKeyPress} value={text}/>
       <div className='Enviar'>
         <button onClick={handleSend}>Enviar</button>
       </div>

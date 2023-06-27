@@ -4,15 +4,16 @@
     }
 }
 
+// Página principal, logeo y registro
 .contenedor{
-    background-color: rgb(218, 188, 245);
+    background-color: #B4AEE8;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .wrapper{
-        background-color: #fff;
+        background-color: #FFD3B5;
         padding: 20px 60px;
         border-radius: 15px;
         display: flex;
@@ -29,14 +30,14 @@
             input{
                 padding: 15px;
                 border: none;
-                border-bottom: 2px solid #341645;
+                border-bottom: 2px solid #e8b99b;
             }
 
             button{
                 padding: 15px;
                 border: none;
                 border-radius: 15px;
-                background-color: #412651;
+                background-color: #54502f;
                 color: #fff;
                 font-weight: bold;
                 cursor: pointer;
@@ -77,9 +78,10 @@
     }
 }
 
+// Página principal
 .Inicio{
 
-    background-color: rgb(218, 188, 245);
+    background-color: #B4AEE8;
     display: flex;
     align-items: center;
     height: 100vh;
@@ -97,10 +99,13 @@
             display: none;
         }
 
+        // Toda la parte izquierda
         .BarraLateral{
+            // Color donde estan los usuarios
             flex: 1;
-            background-color: #333;
+            background-color: #333333;
 
+            //Parte de arriba de donde estan los usuarios, logo, nombre, etc
             .BarraDeNavegacion{
                 display: flex;
                 gap: 10px;
@@ -108,7 +113,8 @@
                 height: 50px;
                 justify-content: space-between;
                 align-items: center;
-                background-color: #8a68b2;
+                background-color:  #6C63FF;
+                font-size: 20px;
 
                 .Logo{
                     font-weight: bold;
@@ -127,13 +133,13 @@
                         padding: 5px;
                         border: 5px;
                         border-radius: 7px;
-                        background-color: #1cc728;
+                        background-color: #a15acb;
                         font-weight: bold;
                         cursor: pointer;
                         transition: .3s ease all;
     
                         &:hover{
-                            background-color: #44a097;
+                            background-color: #632d6f;
                         }
                     }
 
@@ -149,8 +155,9 @@
 
             }
 
+            // Barra busqueda
             .Busqueda{
-                border-bottom: 1px solid brown;
+                border-bottom: 1px solid rgb(239, 238, 240);
     
                 .Formato{
                     padding: 10px;
@@ -185,6 +192,7 @@
                     object-fit: cover;
                 }
 
+                //Nombre del chat que tocamos
                 .UserChatInfo{
                     span{
                         font-size: 18px;
@@ -192,7 +200,7 @@
                     }
                     p{
                         font-size: 12px;
-                        color: gray;
+                        color: #fcfcfc;
                     }
                 }
                 
@@ -200,39 +208,45 @@
 
         }
 
+        //Parte derecha de la app
         .ChatSolo{
             flex: 2;
 
-            .Info{
+            //Nombre del usuario
+            .ChatInfo{
                 display: flex;
                 height: 50px;
-                background-color: gray;
+                background-color: #333333;
                 align-items: center;
                 padding: 10px;
-                color: lightgray;
+                color: rgb(253, 253, 253);
+                font-size: 30px;
             }
 
+            // Parte de los mensajes
             .Mensajes{
                 background-color: lightgray;
                 padding: 10px;
                 height: calc(100% - 160px);
                 overflow: scroll;
 
+                // Mensajes enviados
                 .Mensaje{
                     display: flex;
                     gap: 20px;
 
                     .Info{
                         display: flex;
-                        color: gray;
+                        color: rgb(128, 128, 128);
                         flex-direction: column;
                         margin-bottom: 20px;
 
                         img{
                             width: 40px;
                             height: 40px;
-                            border-radius: 50px;
-                            object-fit: fill;
+                            border-radius: 50%;
+                            object-fit: cover;   
+                            background-color: transparent;
                         }
                     }
 
@@ -260,7 +274,7 @@
 
                         p{
                             background-color: white;
-                            color: rgb(76, 75, 75);
+                            color: rgb(17, 1, 1);
                             border-radius: 10px 0px 10px 10px;
                         }
 
@@ -295,13 +309,13 @@
                         padding: 5px;
                         border: 5px;
                         border-radius: 7px;
-                        background-color: #1cc728;
+                        background-color: #a15acb;
                         font-weight: bold;
                         cursor: pointer;
                         transition: .3s ease all;
     
                         &:hover{
-                            background-color: #44a097;
+                            background-color: #632d6f;
                         }
                     }
                 }
@@ -347,7 +361,7 @@
         
         .message {
             display: flex;
-            gap: 20px;
+            gap: 5px;
             margin-bottom: 20px;
   
             .Info {
@@ -361,6 +375,7 @@
                 height: 40px;
                 border-radius: 50%;
                 object-fit: cover;
+                background-color: transparent;
               }
             }
 
@@ -379,17 +394,20 @@
 
                 img {
                 width: 50%;
+                border-radius: 10px;
+                object-fit: cover;
+                background-color: transparent;
                 }
 
             }
             &.owner {
                 flex-direction: row-reverse;
     
-                .messageContent {
+                .Contenido {
                   align-items: flex-end;
                   p {
-                    background-color: #8da4f1;
-                    color: white;
+                    background-color: #f9f9f9;
+                    color: rgb(0, 0, 0);
                     border-radius: 10px 0px 10px 10px;
                   }
                 }

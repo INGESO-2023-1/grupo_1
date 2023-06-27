@@ -11,7 +11,7 @@ const ChatSolo = () => {
 
   return (
     <div className="ChatSolo">
-      <div className='Info'>
+      <div className='ChatInfo'>
         <span>{data.user.userInfo?.displayName}</span>
       </div>
       <Mensajes/>

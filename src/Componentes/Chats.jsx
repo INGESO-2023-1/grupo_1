@@ -34,10 +34,9 @@ const Chats = () => {
   return (
     <div className='Chats'>
       {Object.entries(chats)?.map((chat)=>(
-        <div className='Usuario' key = {chat[0]}>
+        <div className='Usuario' key = {chat[0]} onClick={()=>handleSelect(chat[1])}>
           <img src={chat[1].userInfo.photoURL}/>
           <span>{chat[1].userInfo.displayName}</span>
-          <button onClick={()=>handleSelect(chat[1])}>Abrir</button>
 
         </div>
       ))}
